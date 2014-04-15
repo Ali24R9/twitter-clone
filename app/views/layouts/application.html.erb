@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+  <div id="user_header">
+    <%= link_to "Home", root_url %> |
+    <% if current_user %>
+      <%= link_to "Log Off", logout_path %>
+    <% else %>
+      <%= link_to "Log In", login_path %>
+      <%= link_to "Sign Up", root_url %>
+    <% end %>
+  </div>
+  <%= bootstrap_flash %>
 
-<%= yield %>
-
+  <%= yield %>
+</div>
 </body>
 </html>
