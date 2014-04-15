@@ -1,0 +1,19 @@
+<%= form_for @tweet, :class => "tweet_form", remote: true do |f| %>
+  <% if @tweet.errors.any? %>
+    <div class="error_messages">
+      <h2 class="error">Form is invaid</h2>
+      <ul>
+        <% @tweet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :tweet, "Tweet Tweet" %></br>
+    <%=f.text_area :tweet %>
+  </div>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <%= f.submit("Post!", :class => "btn btn-default") %>
+  <% end %>
